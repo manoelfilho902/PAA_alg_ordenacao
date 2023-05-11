@@ -1,4 +1,4 @@
-def bubble(A):
+def bubble(A, contador):
     count = True
     while (True):
         changed = False
@@ -8,6 +8,7 @@ def bubble(A):
                 aux = A[i]
                 A[i] = A[i+1]
                 A[i+1] = aux
-                changed = True            
+                changed = True
+                contador += 1         
         if(not changed):
             break

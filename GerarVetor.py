@@ -36,4 +36,3 @@ for i in tamanhos:
     with open(enderecos[2] + '/'+str(i)+'.csv', 'w', encoding='UTF-8') as f:
         w = csv.writer(f)
         w.writerow(aleat)
-    break

@@ -1,4 +1,4 @@
-def bubble(A, contador):
+def BubbleSort(A, contador):
     count = True
     while (True):
         changed = False

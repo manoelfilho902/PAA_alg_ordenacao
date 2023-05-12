@@ -1,11 +1,10 @@
 import random
 import csv
 import os
-
+from main import enderecos
 tamanhos = [pow(10, 3), pow(10, 4), pow(10, 5), 2*pow(10, 5), 3*pow(10, 5), 4*pow(10, 5),
             5*pow(10, 5), 6*pow(10, 5), 7*pow(10, 5), 8*pow(10, 5), 9*pow(10, 5), pow(10, 6)]
 
-enderecos = ['./ordenado/asc', './ordenado/desc', './aleatorio']
 
 for f in enderecos:
     try:

@@ -12,6 +12,6 @@ def InsertionSort(A):
             i -= 1
 
         A[i+1] = key
-    print(A)
+    # print(A)
     return contador
 

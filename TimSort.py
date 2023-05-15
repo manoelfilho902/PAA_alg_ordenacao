@@ -1,7 +1,6 @@
-import csv
-from main import main
-
 MinMerge = 64
+
+changes = 0
 
 
 def TimSort(A):
@@ -21,11 +20,12 @@ def TimSort(A):
                 merge(A, left, mind, rigth)
         size = 2 * size
 
-    m = main()
-    m.IsSorted(A)
-    with open('./log/tim.csv', 'w', encoding='UTF-8') as f:
-        w = csv.writer(f)
-        w.writerow(A)
+    return changes
+    # m = main()
+    # m.IsSorted(A)
+    # with open('./log/tim.csv', 'w', encoding='UTF-8') as f:
+    #     w = csv.writer(f)
+    #     w.writerow(A)
 
 
 def merge(A, l, m, r):
@@ -33,6 +33,7 @@ def merge(A, l, m, r):
     len2 = r - m
     left = []
     rigth = []
+    global changes
 
     for i in range(len1):
         left.append(A[l + i])
@@ -51,18 +52,20 @@ def merge(A, l, m, r):
         else:
             A[k] = rigth[j]
             j += 1
-
+        changes += 1
         k += 1
 
     while i < len1:
         A[k] = left[i]
         k += 1
         i += 1
+        changes += 1
 
     while j < len2:
         A[k] = rigth[j]
         k += 1
         j += 1
+        changes += 1
 
 
 def minRunLength(n):
@@ -75,6 +78,7 @@ def minRunLength(n):
 
 
 def InsertionSort(A, left, right):
+    global changes
     for i in range(left + 1, right + 1):
         j = i
         while j > left and A[j] < A[j-1]:
@@ -82,15 +86,16 @@ def InsertionSort(A, left, right):
             A[j] = A[j-1]
             A[j-1] = aux
             j -= 1
+            changes += 1
 
 
 # TimSort([5, 58, 46, 59, 5, 5184, 54, 7,00,447,58,1])
 
 
-with open('./aleatorio/700000.csv', 'r') as f:
-    reader = csv.reader(f)
-    r = 0
-    for row in reader:
-        if (len(row) > 0):
-            r = row
-    TimSort(r)
+# with open('./aleatorio/700000.csv', 'r') as f:
+#     reader = csv.reader(f)
+#     r = 0
+#     for row in reader:
+#         if (len(row) > 0):
+#             r = row
+#     TimSort(r)

@@ -1,9 +1,10 @@
 #!/usr/local/bin/gnuplot -persist
 # set terminal pngcairo  transparent enhanced font "arial,10" fontscale 1.0 size 600, 400 
 # set output 'cerf.1.png'
-set format y "%.2f" 
+# set format y "%.2f" 
+set key fixed left top vertical Right noreverse enhanced autotitle box lt black linewidth 1.000 dashtype solid
 unset parametric
-set samples 200, 200
+set samples 250, 250
 set style data lines
 set mxtics
 set mytics
@@ -17,8 +18,9 @@ set zrange [ * : * ] noreverse writeback
 set cbrange [ * : * ] noreverse writeback
 set rrange [ * : * ] noreverse writeback
 set colorbox vertical origin screen 0.9, 0.2 size screen 0.05, 0.6 front  noinvert bdefault
-NO_ANIMATION = 1
+# NO_ANIMATION = 1
 save_encoding = "utf8"
+
 plot VP(x,1.53,0.0) title "Ïƒ=1.53 Î³=0.00",      VP(x,1.30,0.5) title "Ïƒ=1.30 Î³=0.50",      VP(x,1.00,1.0) title "Ïƒ=1.00 Î³=1.00",      VP(x,0.00,1.8) title "Ïƒ=0.00 Î³=1.80"
 
 # to run gnuplot -pc ./gnuplot/teste.p

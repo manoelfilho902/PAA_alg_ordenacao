@@ -4,6 +4,7 @@ import math
 def HeapSort(A):
     n = len(A)
     i = math.trunc(n / 2)
+    contador = 0
 
     while True:
         if (i > 0):
@@ -16,7 +17,7 @@ def HeapSort(A):
 
             t = A[n]
             A[n] = A[0]
-
+            contador += 1
         pai = i
         filho = (i*2) + 1
 
@@ -26,6 +27,7 @@ def HeapSort(A):
 
             if (A[filho] > t):
                 A[pai] = A[filho]
+                contador += 1
 
                 pai = filho
                 filho = pai * 2 + 1
@@ -33,8 +35,10 @@ def HeapSort(A):
                 break
 
         A[pai] = t
+        contador += 1
 
-    print(A)
+    return contador
+    # print(A)
 
 
-HeapSort([5, 58, 46, 59, 5, 5184, 54, 7, 0, 447, 58, 1])
+# HeapSort([5, 58, 46, 59, 5, 5184, 54, 7, 0, 447, 58, 1])

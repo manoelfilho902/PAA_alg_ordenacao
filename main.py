@@ -44,7 +44,7 @@ class main:
             for v in data[a]:# percorre os vetores tamanho
                 for m in metodos: # percorre os metodos
                     ret = self.RunMethod(m, v.data)
-                    self.SaveData(ArquivosMetaDataTempo[a], ret, v.name, m)
+                    self.SaveData(a, ret, v.name, m)
                 print(a, v.name)
 
 
@@ -65,10 +65,13 @@ class main:
     def SaveData(self, endereco, data, index: str, method):
         # print(index)
         meta = metadata(tempo=data['tempo'], trocas=data['count'])
-        SaveMetaDataCSV(endereco, meta, method,
+        SaveMetaDataCSV(ArquivosMetaDataTempo[endereco], meta, method,
+                        int(re.sub('[^0-9]', '', index)))
+        
+        meta.tempo= data['count']
+        SaveMetaDataCSV(ArquivosMetaDataTroca[endereco], meta, method,
                         int(re.sub('[^0-9]', '', index)))
 
-        # SaveMetaDataCSV(endereco, meta, method, re.sub('[^0-9]','', index))
 
     # faz a leitura de todos os dados
 

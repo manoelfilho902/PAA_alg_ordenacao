@@ -51,6 +51,16 @@ if __name__ == "__main__":
 
 
 def QuickSort(A):
-    sys.setrecursionlimit(200000)
+    sys.setrecursionlimit(max(sys.getrecursionlimit(), len(A)+900))
     ord, count = quickSort(A, 0, len(A)-1)
     return count
+
+
+# import csv
+# with open('./DATA/ordenado/asc/200000.csv') as f:
+#     reader = csv.reader(f)
+#     r = 0
+#     for row in reader:
+#         if (len(row) > 0):
+#             r = row
+#     print(QuickSort(A))

@@ -13,7 +13,7 @@ def SaveMetaData(where, metadata, name):
         f.write(json.dumps(metadata.__dict__))
 
 def SaveMetaDataCSV(csvDir, metadata, columnName, row):
-    print(row)
+    # print(row)
     csv = pd.read_csv(csvDir, index_col=0) 
     csv.loc[row, columnName] =  metadata.tempo #não importa o tipo
     csv.to_csv(csvDir)

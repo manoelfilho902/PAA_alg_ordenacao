@@ -5,3 +5,4 @@ from BubbleSort import BubbleSort
 from InsertionSort import InsertionSort
 from TimSort import TimSort
 from HeapSort import HeapSort
+from QuickSort import QuickSort

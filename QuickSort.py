@@ -1,6 +1,6 @@
 from SaveMetaData import metadata, SaveMetaData
 import time
-
+import sys
 
 def exchange(a, b):
     return b, a
@@ -48,3 +48,9 @@ if __name__ == "__main__":
     var = metadata(tempo=(time.time() - dt), trocas = trocas)
 
     SaveMetaData('quickSort', var, '2023-05-11')
+
+
+def QuickSort(A):
+    sys.setrecursionlimit(200000)
+    ord, count = quickSort(A, 0, len(A)-1)
+    return count

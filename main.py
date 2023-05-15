@@ -6,8 +6,8 @@ import re
 from SaveMetaData import SaveMetaDataCSV, metadata
 
 enderecos = ['./DATA/ordenado/asc', './DATA/ordenado/desc', './DATA/aleatorio']
-metodos = ['BubbleSort', 'SelectionSort',
-           'InsertionSort', 'TimSort', 'HeapSort']
+metodos = ['BubbleSort', 'SelectionSort', 'InsertionSort',
+           'TimSort', 'HeapSort', 'QuickSort']
 
 tamanhos = [pow(10, 3), pow(10, 4), pow(10, 5), 2*pow(10, 5), 3*pow(10, 5), 4*pow(10, 5),
             5*pow(10, 5), 6*pow(10, 5), 7*pow(10, 5), 8*pow(10, 5), 9*pow(10, 5), pow(10, 6)]
@@ -35,9 +35,19 @@ class main:
         # test = data[len(data)-4].name
 
         # print(re.sub('[^0-9]','', '51548545.csv'))
+        ret = self.RunMethod(metodos[5], data['Aleatorio'][3].data)
+        # print(ret)
+        # self.SaveData(
+            # ArquivosMetaDataTempo['Aleatorio'], ret,  data['al'][3].name, metodos[3])
 
-        ret = self.RunMethod(metodos[3], data['al'][3].data)
-        self.SaveData(ArquivosMetaDataTempo['Aleatorio'], ret,  data['al'][3].name, metodos[3])
+        for a in data: # percorre as pastas asc des e aleatorio
+            for v in data[a]:# percorre os vetores tamanho
+                for m in metodos: # percorre os metodos
+                    ret = self.RunMethod(m, v.data)
+                    self.SaveData(ArquivosMetaDataTempo[a], ret, v.name, m)
+                print(a, v.name)
+
+
 
     def ReadAllMethods(self):
         pass
@@ -53,9 +63,10 @@ class main:
         }
 
     def SaveData(self, endereco, data, index: str, method):
-        print(index)
+        # print(index)
         meta = metadata(tempo=data['tempo'], trocas=data['count'])
-        SaveMetaDataCSV(endereco, meta, method, int(re.sub('[^0-9]', '', index)))
+        SaveMetaDataCSV(endereco, meta, method,
+                        int(re.sub('[^0-9]', '', index)))
 
         # SaveMetaDataCSV(endereco, meta, method, re.sub('[^0-9]','', index))
 
@@ -65,7 +76,7 @@ class main:
         retorno = {
             "asc": [],
             "desc": [],
-            "al": []
+            "Aleatorio": []
         }
 
         for dir in enderecos:
@@ -80,7 +91,7 @@ class main:
                     dt = data(file, r, dir)
 
                 if ('aleatorio' in dir):
-                    retorno.get('al').append(dt)
+                    retorno.get('Aleatorio').append(dt)
                 else:
                     if ('asc' in dir):
                         retorno.get('asc').append(dt)

@@ -17,7 +17,7 @@ def TimSort(A):
             rigth = min(left + 2 * size - 1, n - 1)
 
             if (mind < rigth):
-                merge(A, left, mind, rigth)
+                Merge(A, left, mind, rigth)
         size = 2 * size
 
     return changes
@@ -28,12 +28,14 @@ def TimSort(A):
     #     w.writerow(A)
 
 
-def merge(A, l, m, r):
+def Merge(A, l, m, r):
     len1 = m - l + 1
     len2 = r - m
     left = []
     rigth = []
     global changes
+
+    ret = 0
 
     for i in range(len1):
         left.append(A[l + i])
@@ -53,6 +55,8 @@ def merge(A, l, m, r):
             A[k] = rigth[j]
             j += 1
         changes += 1
+        ret +=1
+
         k += 1
 
     while i < len1:
@@ -60,13 +64,16 @@ def merge(A, l, m, r):
         k += 1
         i += 1
         changes += 1
+        ret +=1
 
     while j < len2:
         A[k] = rigth[j]
         k += 1
         j += 1
         changes += 1
-
+        ret +=1
+ 
+    return ret
 
 def minRunLength(n):
     r = 0

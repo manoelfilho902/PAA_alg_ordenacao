@@ -7,7 +7,7 @@ from SaveMetaData import SaveMetaDataCSV, metadata
 
 enderecos = ['./DATA/ordenado/asc', './DATA/ordenado/desc', './DATA/aleatorio']
 metodos = ['BubbleSort', 'SelectionSort', 'InsertionSort','TimSort',
-           'HeapSort', 'QuickSort', 'ShellSort']
+           'HeapSort', 'QuickSort', 'ShellSort', 'MergeSort']
 
 tamanhos = [pow(10, 3), pow(10, 4), pow(10, 5), 2*pow(10, 5), 3*pow(10, 5), 4*pow(10, 5),
             5*pow(10, 5), 6*pow(10, 5), 7*pow(10, 5), 8*pow(10, 5), 9*pow(10, 5), pow(10, 6)]

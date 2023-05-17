@@ -25,9 +25,11 @@ def ShellSort(A):
 
 # import csv
 
-# with open('./DATA/ordenado/asc/1000000.csv', 'r') as f:
+# with open('./DATA/ordenado/asc/1000.csv', 'r') as f:
 #     reader = csv.reader(f)
 #     r = 0
 #     for row in reader:
 #         if (len(row) > 0):
 #             r = row
+
+#     print(ShellSort(r))

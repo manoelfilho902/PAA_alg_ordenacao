@@ -30,7 +30,7 @@ def partition(A, primeiro, ultimo):
 
     left = primeiro+1
     right = ultimo
-
+    trocas = comparacao = 0
     final = False
     while not final:
 
@@ -51,7 +51,8 @@ def partition(A, primeiro, ultimo):
     A[primeiro] = A[right]
     A[right] = temp
 
-    return right
+    trocas += 1
+    return A, right, trocas
 
 
 def quickSort(A, p, r):

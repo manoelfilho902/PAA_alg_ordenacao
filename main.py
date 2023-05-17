@@ -126,7 +126,7 @@ class main:
         # por tempo
         frame.to_csv('./MetaData/vetor_aleatorio_tempo_por_entrada.csv')
         frame.to_csv('./MetaData/vetor_ordenado_asc_tempo_por_entrada.csv')
-        frame.o_csv('./MetaData/vetor_ordenado_desc_tempo_por_entrada.csv')
+        frame.to_csv('./MetaData/vetor_ordenado_desc_tempo_por_entrada.csv')
         # por quantidade de trocas
         frame.to_csv('./MetaData/vetor_aleatorio_trocas_por_entrada.csv')
         frame.to_csv('./MetaData/vetor_ordenado_asc_trocas_por_entrada.csv')

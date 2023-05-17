@@ -35,7 +35,7 @@ class main:
         # test = data[len(data)-4].name
 
         # print(re.sub('[^0-9]','', '51548545.csv'))
-        ret = self.RunMethod(metodos[5], data['Aleatorio'][3].data)
+        # ret = self.RunMethod(metodos[5], data['Aleatorio'][3].data)
         # print(ret)
         # self.SaveData(
             # ArquivosMetaDataTempo['Aleatorio'], ret,  data['al'][3].name, metodos[3])
@@ -126,7 +126,7 @@ class main:
         # por tempo
         frame.to_csv('./MetaData/vetor_aleatorio_tempo_por_entrada.csv')
         frame.to_csv('./MetaData/vetor_ordenado_asc_tempo_por_entrada.csv')
-        frame.to_csv('./MetaData/vetor_ordenado_desc_tempo_por_entrada.csv')
+        frame.o_csv('./MetaData/vetor_ordenado_desc_tempo_por_entrada.csv')
         # por quantidade de trocas
         frame.to_csv('./MetaData/vetor_aleatorio_trocas_por_entrada.csv')
         frame.to_csv('./MetaData/vetor_ordenado_asc_trocas_por_entrada.csv')
@@ -138,6 +138,5 @@ class data:
         self.name = name
         self.data = vector
         self.dir = dir
-
 
 main()

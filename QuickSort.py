@@ -2,27 +2,56 @@ from SaveMetaData import metadata, SaveMetaData
 import time
 import sys
 
+
 def exchange(a, b):
     return b, a
 
 
-def partition(A, p, r):
-    """Particiona a lista A, colocando todos os elementos menores que A[r], na esquerda"""
+# def partition(A, p, r):
+#     """Particiona a lista A, colocando todos os elementos menores que A[r], na esquerda"""
 
-    x = A[r]
-    i = p - 1
-    trocas = comparacao = 0
+#     x = A[r]
+#     i = p - 1
+#     trocas = comparacao = 0
 
-    for j in range(p,r):
-        if A[j] <= x:
-            comparacao += 1
-            i += 1
-            A[i], A[j] = exchange(A[i], A[j])
-            trocas += 1
+#     for j in range(p,r):
+#         if A[j] <= x:
+#             comparacao += 1
+#             i += 1
+#             A[i], A[j] = exchange(A[i], A[j])
+#             trocas += 1
 
-    A[i + 1], A[r] = exchange(A[i + 1], A[r])
-    trocas += 1
-    return A, (i + 1), trocas
+#     A[i + 1], A[r] = exchange(A[i + 1], A[r])
+#     trocas += 1
+#     return A, (i + 1), trocas
+
+def partition(A, primeiro, ultimo):
+    pivotvalue = A[primeiro]
+
+    left = primeiro+1
+    right = ultimo
+
+    final = False
+    while not final:
+
+        while left <= right and A[left] <= pivotvalue:
+            left = left + 1
+
+        while A[right] >= pivotvalue and right >= left:
+            right = right - 1
+
+        if right < left:
+            final = True
+        else:
+            temp = A[left]
+            A[left] = A[right]
+            A[right] = temp
+
+    temp = A[primeiro]
+    A[primeiro] = A[right]
+    A[right] = temp
+
+    return right
 
 
 def quickSort(A, p, r):
@@ -37,7 +66,8 @@ def quickSort(A, p, r):
 
 if __name__ == "__main__":
 
-    temp = str(input()).split(',')  # recebe uma string de valores inteiros separados por vírgula
+    # recebe uma string de valores inteiros separados por vírgula
+    temp = str(input()).split(',')
 
     A = [int(a) for a in temp]
 
@@ -45,7 +75,7 @@ if __name__ == "__main__":
 
     A, trocas = quickSort(A, 0, len(A)-1)
 
-    var = metadata(tempo=(time.time() - dt), trocas = trocas)
+    var = metadata(tempo=(time.time() - dt), trocas=trocas)
 
     SaveMetaData('quickSort', var, '2023-05-11')
 

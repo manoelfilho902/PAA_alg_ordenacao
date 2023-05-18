@@ -42,10 +42,12 @@ class main:
 
         for a in data: # percorre as pastas asc des e aleatorio
             for v in data[a]:# percorre os vetores tamanho
+                print('Iniciando: ', a, v.name)
                 for m in metodos: # percorre os metodos
                     ret = self.RunMethod(m, v.data)
                     self.SaveData(a, ret, v.name, m)
-                print(a, v.name)
+                print('Finalizado', a, v.name)
+
 
 
 
@@ -53,10 +55,13 @@ class main:
         pass
 
     def RunMethod(self, method, data):
+        print(method)
         inicio = time.time()
         mt = getattr(__import__(method), method)
+        print('Iniciando: ', method, 'tamanho: ', len(data))
         count = mt(data)
         fim = time.time()
+        print('Finalizado: ', method, 'tempo: ', fim - inicio)
         return {
             'count': count,
             'tempo': (fim - inicio)

@@ -1,0 +1,9 @@
+Nome do Sistema Operacional	Microsoft Windows Server 2019 Datacenter
+Versão	10.0.17763 Compilação 17763
+Fabricante do Sistema Operacional	Microsoft Corporationnt ML30 Gen9
+Tipo do sistema	PC baseado em X64
+Processador	Intel(R) Xeon(R) CPU E3-1220 v5 @ 3.00GHz, 3000 Mhz, 4 Núcleo(s), 4 Processador(es) Lógico(s)
+Fabricante da BaseBoard	HP
+Produto BaseBoard	ProLiant ML30 Gen9
+Localidade	Brasil
+Memória Física (RAM) Instalada	32,0 GB

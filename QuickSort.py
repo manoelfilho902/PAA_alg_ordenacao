@@ -30,7 +30,7 @@ def partition(A, primeiro, ultimo):
 
     left = primeiro+1
     right = ultimo
-    trocas = comparacao = 0
+    trocas = 0
     final = False
     while not final:
 
@@ -65,22 +65,6 @@ def quickSort(A, p, r):
     return A, (trocas+t0+t1)
 
 
-if __name__ == "__main__":
-
-    # recebe uma string de valores inteiros separados por vírgula
-    temp = str(input()).split(',')
-
-    A = [int(a) for a in temp]
-
-    dt = time.time()
-
-    A, trocas = quickSort(A, 0, len(A)-1)
-
-    var = metadata(tempo=(time.time() - dt), trocas=trocas)
-
-    SaveMetaData('quickSort', var, '2023-05-11')
-
-
 def QuickSort(A):
     sys.setrecursionlimit(max(sys.getrecursionlimit(), len(A)+900))
     ord, count = quickSort(A, 0, len(A)-1)
@@ -88,10 +72,11 @@ def QuickSort(A):
 
 
 # import csv
-# with open('./DATA/ordenado/asc/200000.csv') as f:
+# with open('./DATA/ordenado/asc/100000.csv') as f:
 #     reader = csv.reader(f)
 #     r = 0
 #     for row in reader:
 #         if (len(row) > 0):
 #             r = row
-#     print(QuickSort(A))
+#     inicio = time.time()
+#     print(QuickSort(r), time.time() - inicio)

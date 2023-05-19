@@ -4,6 +4,7 @@ import pandas as pd
 import time
 import re
 from SaveMetaData import SaveMetaDataCSV, metadata
+import multiprocessing as mp
 
 enderecos = ['./DATA/ordenado/asc', './DATA/ordenado/desc', './DATA/aleatorio']
 metodos = ['BubbleSort', 'SelectionSort', 'InsertionSort','TimSort',
@@ -46,7 +47,7 @@ class main:
             for v in data[a]:  # percorre os vetores tamanho
                 print('Iniciando: ', a, v.name)
                 for m in metodos:  # percorre os metodos
-                    ret = self.RunMethod(m, v.data)
+                    ret = self.RunMethod(m, v.data.copy())
                     self.SaveData(a, ret, v.name, m)
                 print('Finalizado', a, v.name)
 
@@ -143,4 +144,7 @@ class data:
         self.dir = dir
 
 
-main()
+
+process = mp.Process(target=main)
+
+process.start()

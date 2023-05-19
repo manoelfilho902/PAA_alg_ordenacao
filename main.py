@@ -9,13 +9,15 @@ enderecos = ['./DATA/ordenado/asc', './DATA/ordenado/desc', './DATA/aleatorio']
 metodos = ['BubbleSort', 'SelectionSort', 'InsertionSort','TimSort',
            'HeapSort', 'QuickSort', 'ShellSort', 'MergeSort']
 
+# metodos = ['QuickSort']
+
 tamanhos = [pow(10, 3), pow(10, 4), pow(10, 5), 2*pow(10, 5), 3*pow(10, 5), 4*pow(10, 5),
             5*pow(10, 5), 6*pow(10, 5), 7*pow(10, 5), 8*pow(10, 5), 9*pow(10, 5), pow(10, 6)]
 
 ArquivosMetaDataTempo = {
     'Aleatorio': './MetaData/vetor_aleatorio_tempo_por_entrada.csv',
     'asc': './MetaData/vetor_ordenado_asc_tempo_por_entrada.csv',
-    'desc': './MetaData/vetor_ordenado_dsc_tempo_por_entrada.csv'
+    'desc': './MetaData/vetor_ordenado_desc_tempo_por_entrada.csv'
 }
 
 ArquivosMetaDataTroca = {
@@ -38,18 +40,15 @@ class main:
         # ret = self.RunMethod(metodos[5], data['Aleatorio'][3].data)
         # print(ret)
         # self.SaveData(
-            # ArquivosMetaDataTempo['Aleatorio'], ret,  data['al'][3].name, metodos[3])
+        # ArquivosMetaDataTempo['Aleatorio'], ret,  data['al'][3].name, metodos[3])
 
-        for a in data: # percorre as pastas asc des e aleatorio
-            for v in data[a]:# percorre os vetores tamanho
+        for a in data:  # percorre as pastas asc des e aleatorio
+            for v in data[a]:  # percorre os vetores tamanho
                 print('Iniciando: ', a, v.name)
-                for m in metodos: # percorre os metodos
+                for m in metodos:  # percorre os metodos
                     ret = self.RunMethod(m, v.data)
                     self.SaveData(a, ret, v.name, m)
                 print('Finalizado', a, v.name)
-
-
-
 
     def ReadAllMethods(self):
         pass
@@ -72,11 +71,10 @@ class main:
         meta = metadata(tempo=data['tempo'], trocas=data['count'])
         SaveMetaDataCSV(ArquivosMetaDataTempo[endereco], meta, method,
                         int(re.sub('[^0-9]', '', index)))
-        
-        meta.tempo= data['count']
+
+        meta.tempo = data['count']
         SaveMetaDataCSV(ArquivosMetaDataTroca[endereco], meta, method,
                         int(re.sub('[^0-9]', '', index)))
-
 
     # faz a leitura de todos os dados
 
@@ -143,5 +141,6 @@ class data:
         self.name = name
         self.data = vector
         self.dir = dir
+
 
 main()

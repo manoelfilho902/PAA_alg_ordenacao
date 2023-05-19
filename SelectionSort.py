@@ -15,12 +15,3 @@ def SelectionSort(A):
             A[menor] = aux
             contador += 1
     return contador
- 
-
-dt = time.time()
-
-troca = SelectionSort([515,48,2,4,8,8])
-    
-var = metadata(tempo=(time.time() - dt), trocas = troca)
-
-SaveMetaData('SelectionSort', var, '2023-05-11')

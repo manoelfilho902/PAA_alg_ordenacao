@@ -6,14 +6,16 @@ set title "::alg _ ::smp"
 
 set key autotitle columnhead
 set xlabel "Tamanho do vetor"
-set ylabel "Tempo (M:S.mmm)"
+set ylabel "Tempo (H:M:S.mmmm)"
 set ydata time
-set timefmt "%s.9s"
-set format y "%H:%M:%.4S"
+set timefmt "%M:%s.%s"
+# set format y "%H:%M:%.4S"
 # set format x "%.s*10^{%T}"
 set format x "%2.0t*10^{%L}"
 # set terminal png size 1920,1080 enhanced font "Helvetica,20"
 # set output 'output.png'
+
+
 
 NO_ANIMATION = 1
 save_encoding = "utf8"

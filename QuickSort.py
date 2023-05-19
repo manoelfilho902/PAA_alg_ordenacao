@@ -71,12 +71,12 @@ def QuickSort(A):
     return count
 
 
-import csv
-with open('./DATA/ordenado/asc/1000000.csv') as f:
-    reader = csv.reader(f)
-    r = 0
-    for row in reader:
-        if (len(row) > 0):
-            r = row
-    inicio = time.time()
-    print(QuickSort(r), time.time() - inicio)
+# import csv
+# with open('./DATA/ordenado/asc/1000000.csv') as f:
+#     reader = csv.reader(f)
+#     r = 0
+#     for row in reader:
+#         if (len(row) > 0):
+#             r = row
+#     inicio = time.time()
+#     print(QuickSort(r), time.time() - inicio)

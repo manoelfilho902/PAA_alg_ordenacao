@@ -7,7 +7,7 @@ from SaveMetaData import SaveMetaDataCSV, metadata
 import multiprocessing as mp
 
 enderecos = ['./DATA/ordenado/asc', './DATA/ordenado/desc', './DATA/aleatorio']
-metodos = ['BubbleSort', 'SelectionSort', 'InsertionSort','TimSort',
+metodos = ['BubbleSort', 'SelectionSort', 'InsertionSort', 'TimSort',
            'HeapSort', 'QuickSort', 'ShellSort', 'MergeSort']
 
 # metodos = ['QuickSort']
@@ -29,6 +29,8 @@ ArquivosMetaDataTroca = {
 
 
 class main:
+    poll = mp.Pool(25)
+
     def __init__(self) -> None:
         data = self.ReadAllData()
         self.buildMetadata()
@@ -45,11 +47,21 @@ class main:
 
         for a in data:  # percorre as pastas asc des e aleatorio
             for v in data[a]:  # percorre os vetores tamanho
-                print('Iniciando: ', a, v.name)
+                # print('Iniciando: ', a, v.name)
                 for m in metodos:  # percorre os metodos
-                    ret = self.RunMethod(m, v.data.copy())
-                    self.SaveData(a, ret, v.name, m)
-                print('Finalizado', a, v.name)
+                    # ret = self.RunMethod(m, v.data.copy())
+                    # self.SaveData(a, ret, v.name, m)
+                    # p = mp.Process(target=self.task, args=(
+                    #     m, v.data.copy(), a, v.name))
+                    self.poll.apply_async(func=self.task, args=(
+                        m, v.data.copy(), a, v.name))
+        self.poll.close()
+        self.poll.join()
+                # print('Finalizado', a, v.name)
+
+    def task(self, method, data, endereco, index: str):
+        ret = self.RunMethod(method=method, data=data)
+        self.SaveData(endereco=endereco, data=ret, index=index, method=method)
 
     def ReadAllMethods(self):
         pass
@@ -86,6 +98,8 @@ class main:
             "Aleatorio": []
         }
 
+        esquecer = [pow(10, 3), pow(10, 4), pow(10, 5), pow(10, 6)]
+
         for dir in enderecos:
             for file in os.listdir(dir):
                 dt = None
@@ -102,7 +116,9 @@ class main:
                 else:
                     if ('asc' in dir):
                         retorno.get('asc').append(dt)
+                        # pass
                     else:
+                        # if (int(dt.name.replace('.csv', '')) not in esquecer):
                         retorno.get('desc').append(dt)
         return retorno
 
@@ -144,7 +160,5 @@ class data:
         self.dir = dir
 
 
-
-process = mp.Process(target=main)
-
-process.start()
+if __name__ == '__main__':
+    main()

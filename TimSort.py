@@ -1,5 +1,4 @@
 MinMerge = 64
-
 changes = 0
 
 

@@ -28,11 +28,11 @@ save_encoding = "utf8"
 # plot './vetor_ordenado_asc_tempo_por_entrada.csv' using 1:2 with lines linewidth 1.2, '' using 1:3 with lines linewidth 1.2, '' using 1:4 with lines linewidth 1.2, '' using 1:5 with lines linewidth 1.2,'' using 1:6 with lines linewidth 1.2,'' using 1:7 with lines linewidth 1.2,'' using 1:8 with lines linewidth 1.2,'' using 1:9 with lines linewidth 1.2 '' using 1:10 with lines linewidth 1.2
 # set size 1.,1.
 # set origin  0,.8
-plot './vetor_ordenado_asc_tempo_por_entrada.csv' using 1:2 with lines linewidth 1.2, '' using 1:3 with lines linewidth 1.2, '' using 1:4 with lines linewidth 1.2
+plot './vetor_ordenado_asc_tempo_por_entrada.csv' using 1:2 with lines linewidth 1.2, '' using 1:3 with lines linewidth 1.2, '' using 1:4 with lines linewidth 1.2,'' using 1:8 with lines linewidth 1.2
 
 # set size 1.,1.
 # set origin 0,0
 set ylabel "Tempo (M:S)"
 set terminal pngcairo size 1024*scale,768*scale fontscale scale linewidth scale pointscale scale
 set output 'output2.png'
-plot './vetor_ordenado_asc_tempo_por_entrada.csv' using 1:5 with lines linewidth 1.2,'' using 1:6 with lines linewidth 1.2,'' using 1:7 with lines linewidth 1.2,'' using 1:8 with lines linewidth 1.2,'' using 1:9 with lines linewidth 1.2#, '' using 1:10 with lines linewidth 1.2
+plot './vetor_ordenado_asc_tempo_por_entrada.csv' using 1:5 with lines linewidth 1.2,'' using 1:6 with lines linewidth 1.2,'' using 1:7 with lines linewidth 1.2,'' using 1:9 with lines linewidth 1.2 #, '' using 1:10 with lines linewidth 1.2

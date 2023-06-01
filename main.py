@@ -98,8 +98,6 @@ class main:
             "Aleatorio": []
         }
 
-        esquecer = [pow(10, 3), pow(10, 4), pow(10, 5), pow(10, 6)]
-
         for dir in enderecos:
             for file in os.listdir(dir):
                 dt = None
